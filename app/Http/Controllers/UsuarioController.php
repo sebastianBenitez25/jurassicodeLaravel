@@ -25,7 +25,9 @@ class UsuarioController extends Controller
             'nombre'     => ['required','string','max:100'],
             'usuario'    => ['required','string','max:50','unique:usuarios,usuario'],
             'rol'        => ['required', Rule::in(['jugador','admin'])],
-            'contrasena' => ['required','string','min:6'],
+            'contrasena' => ['required','string','min:6','confirmed'], // ✅ confirmada
+        ], [
+            'contrasena.confirmed' => 'Las contraseñas no coinciden.',
         ]);
 
         $data['contrasena'] = bcrypt($data['contrasena']);
@@ -45,7 +47,9 @@ class UsuarioController extends Controller
             'nombre'     => ['required','string','max:100'],
             'usuario'    => ['required','string','max:50','unique:usuarios,usuario,'.$usuario->id_usuario.',id_usuario'],
             'rol'        => ['required', Rule::in(['jugador','admin'])],
-            'contrasena' => ['nullable','string','min:6'],
+            'contrasena' => ['nullable','string','min:6','confirmed'], // ✅ confirmada si se ingresa
+        ], [
+            'contrasena.confirmed' => 'Las contraseñas no coinciden.',
         ]);
 
         if (!empty($data['contrasena'])) {

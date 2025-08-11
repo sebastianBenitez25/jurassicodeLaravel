@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <title>@yield('title','JurassiDraft')</title>
@@ -7,65 +8,104 @@
   {{-- Bootstrap 5 --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-light">
 
-  <nav class="navbar navbar-expand-lg bg-white border-bottom">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-semibold" href="{{ route('home') }}">JurassiDraft</a>
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center fw-bold" href="{{ route('home') }}">
+        <img src="{{ asset('images/logojuego_nobg.png') }}" alt="JurassiDraft Logo" height="40" class="me-2">
+        JurassiDraft
+      </a>
 
+      <!-- Mobile Toggle -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!-- Menu -->
       <div id="navMain" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-          <li class="nav-item"><a class="nav-link" href="#caracteristicas">Características</a></li>
-          <li class="nav-item"><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
-
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
           @auth
-            @if(auth()->user()->rol === 'admin')
-              <li class="nav-item">
-                <a href="{{ route('admin.usuarios.index') }}" class="btn btn-outline-primary btn-sm ms-lg-2">Panel Admin</a>
-              </li>
-            @else
-              <li class="nav-item">
-                <a href="{{ route('play') }}" class="btn btn-outline-primary btn-sm ms-lg-2">Jugar</a>
-              </li>
-            @endif
-            <li class="nav-item">
-              <form action="{{ route('logout') }}" method="POST" class="ms-lg-2">
-                @csrf
-                <button class="btn btn-outline-danger btn-sm">Salir</button>
-              </form>
-            </li>
+          @if(auth()->user()->rol === 'admin')
+          <li class="nav-item">
+            <a href="{{ route('admin.usuarios.index') }}" class="btn btn-success px-3">Panel Admin</a>
+          </li>
           @else
-            <li class="nav-item">
-              <a href="{{ route('login') }}" class="btn btn-primary btn-sm ms-lg-2">Ingresar</a>
-            </li>
+          <li class="nav-item">
+            <a href="{{ route('play') }}" class="btn btn-success px-3">Jugar</a>
+          </li>
+          @endif
+          <li class="nav-item">
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button class="btn btn-outline-danger px-3">Salir</button>
+            </form>
+          </li>
+          @else
+          <li class="nav-item">
+            <a href="{{ route('login') }}" class="btn btn-success px-3">Ingresar</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-secondary px-3" disabled title="Función disponible próximamente">
+              Registrarse
+            </button>
+          </li>
           @endauth
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="py-5">
+  <main class="">
     @yield('content')
   </main>
 
-  <footer class="border-top bg-white">
+  <footer class="border-top bg-white shadow-sm mt-5">
     <div class="container py-4">
       <div class="row align-items-center">
-        <div class="col">
-          <span class="text-muted">© {{ date('Y') }} JurassiDraft</span>
+
+        {{-- Copyright --}}
+        <div class="col-md-6 d-flex align-items-center mb-3 mb-md-0 text-muted">
+          <span>
+            © {{ date('Y') }}
+            <strong class="text-dark">JurassiDraft</strong>
+            <span class="text-secondary">— Derechos reservados.</span>
+          </span>
         </div>
-        <div class="col text-end">
-          <a href="#caracteristicas" class="link-secondary small me-3">Características</a>
-          <a href="#como-funciona" class="link-secondary small">Cómo funciona</a>
+
+
+        {{-- Links --}}
+        <div class="col-md-6 text-md-end">
+          @auth
+          <a href="{{ route('play') }}" class="text-decoration-none text-success me-3">
+            Jugar
+          </a>
+          @endauth
+          <a href="{{ url('documentacion') }}" class="text-decoration-none text-info-muted me-3">
+            Documentación
+          </a>
+          <a href="mailto:jurassicodeisbo@gmail.com" class="text-decoration-none text-muted">
+            Contacto
+          </a>
         </div>
+      </div>
+
+      {{-- Frase final --}}
+      <div class="text-center mt-3 small text-muted">
+        Hecho con ❤️ por Seba, Nacho, Joaco y Tomi —
+        <a href="https://jurassicode.vercel.app" target="_blank" class="link link-underline">
+          JurassiCode
+        </a>
       </div>
     </div>
   </footer>
 
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

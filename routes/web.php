@@ -3,32 +3,42 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\DocumentacionController;
 use App\Http\Middleware\EsAdmin;
 
-// Home público
+// Home público (siempre la landing)
 Route::get('/', function () {
-    if (auth()->check()) {
-        return auth()->user()->rol === 'admin'
-            ? redirect()->route('admin.usuarios.index')
-            : view('home'); // jugador logueado ve la landing
-    }
-    return view('home'); // visitante
+    return view('home');
 })->name('home');
 
-// Auth
+// =====================
+// Autenticación
+// =====================
 Route::get('/login', [AuthController::class, 'show'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Admin 
+// =====================
+// Admin
+// =====================
 Route::middleware(['auth', EsAdmin::class])
-    ->prefix('admin')->name('admin.')
+    ->prefix('admin')
+    ->name('admin.')
     ->group(function () {
         Route::get('/', fn() => redirect()->route('admin.usuarios.index'))->name('home');
         Route::resource('usuarios', UsuarioController::class)->except(['show']);
     });
 
-// Player (área del jugador - placeholder)
+// =====================
+// Jugador
+// =====================
 Route::middleware('auth')->get('/play', function () {
-    return view('player.play'); // TODO: reemplazar por controlador cuando arme el módulo
+    return view('player.play'); // TODO: reemplazar por controlador cuando se arme el módulo
 })->name('play');
+
+// =====================
+// Documentación
+// =====================
+Route::get('/documentacion/{path?}', [DocumentacionController::class, 'index'])
+    ->where('path', '.*')
+    ->name('documentacion');
