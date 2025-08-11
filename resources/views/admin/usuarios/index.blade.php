@@ -3,13 +3,17 @@
 @section('title','Usuarios')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <h1 class="h4 mb-0">
-    <i class="bi bi-people-fill me-2"></i> Gestión de usuarios
-  </h1>
-  <a href="{{ route('admin.usuarios.create') }}" class="btn btn-success shadow-sm">
-    <i class="bi bi-person-plus-fill me-1"></i> Nuevo usuario
-  </a>
+<div class="row align-items-center mb-4 g-2">
+  <div class="col-12 col-md">
+    <h1 class="h4 mb-0">
+      <i class="bi bi-people-fill me-2"></i> Gestión de usuarios
+    </h1>
+  </div>
+  <div class="col-12 col-md-auto text-md-end">
+    <a href="{{ route('admin.usuarios.create') }}" class="btn btn-success shadow-sm w-100 w-md-auto">
+      <i class="bi bi-person-plus-fill me-1"></i> Nuevo usuario
+    </a>
+  </div>
 </div>
 
 <div class="card shadow-sm border-0">
@@ -27,43 +31,46 @@
       </thead>
       <tbody>
         @forelse($usuarios as $u)
-          <tr>
-            <td class="fw-semibold">{{ $u->id_usuario }}</td>
-            <td>{{ $u->nombre }}</td>
-            <td>{{ $u->usuario }}</td>
-            <td>
-              @php
-                $color = match($u->rol) {
-                  'admin' => 'primary',
-                  'jugador' => 'success',
-                  default => 'secondary'
-                };
-              @endphp
-              <span class="badge bg-{{ $color }} text-uppercase">{{ $u->rol }}</span>
-            </td>
-            <td>{{ \Carbon\Carbon::parse($u->creado_en)->format('Y-m-d H:i') }}</td>
-            <td class="text-end">
-              <a href="{{ route('admin.usuarios.edit', $u) }}" class="btn btn-sm btn-outline-primary me-1">
-                <i class="bi bi-pencil-square"></i>
-              </a>
-              <button type="button"
-                      class="btn btn-sm btn-outline-danger btn-delete"
-                      data-action="{{ route('admin.usuarios.destroy', $u) }}"
-                      data-username="{{ $u->usuario }}"
-                      data-id="{{ $u->id_usuario }}"
-                      data-role="{{ $u->rol }}"
-                      data-created="{{ \Carbon\Carbon::parse($u->creado_en)->format('Y-m-d H:i') }}">
-                <i class="bi bi-trash3-fill"></i>
-              </button>
-            </td>
-          </tr>
+        <tr>
+          <td class="fw-semibold">{{ $u->id_usuario }}</td>
+          <td>{{ $u->nombre }}</td>
+          <td>{{ $u->usuario }}</td>
+          <td>
+            @php
+            $color = match($u->rol) {
+            'admin' => 'primary',
+            'jugador' => 'success',
+            default => 'secondary'
+            };
+            @endphp
+            <span class="badge bg-{{ $color }} text-uppercase">{{ $u->rol }}</span>
+          </td>
+          <td>{{ \Carbon\Carbon::parse($u->creado_en)->format('Y-m-d H:i') }}</td>
+          <td class="text-end">
+            <a href="{{ route('admin.usuarios.edit', $u) }}"
+              class="btn btn-outline-primary p-1 d-inline-flex align-items-center justify-content-center"
+              style="width: 36px; height: 36px;">
+              <i class="bi bi-pencil-square"></i>
+            </a>
+            <button type="button"
+              class="btn btn-outline-danger p-1 d-inline-flex align-items-center justify-content-center btn-delete"
+              style="width: 36px; height: 36px;"
+              data-action="{{ route('admin.usuarios.destroy', $u) }}"
+              data-username="{{ $u->usuario }}"
+              data-id="{{ $u->id_usuario }}"
+              data-role="{{ $u->rol }}"
+              data-created="{{ \Carbon\Carbon::parse($u->creado_en)->format('Y-m-d H:i') }}">
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+          </td>
+        </tr>
         @empty
-          <tr>
-            <td colspan="6" class="text-center text-muted py-4">
-              <i class="bi bi-emoji-frown fs-4 d-block mb-2"></i>
-              No hay usuarios registrados
-            </td>
-          </tr>
+        <tr>
+          <td colspan="6" class="text-center text-muted py-4">
+            <i class="bi bi-emoji-frown fs-4 d-block mb-2"></i>
+            No hay usuarios registrados
+          </td>
+        </tr>
         @endforelse
       </tbody>
     </table>
@@ -112,26 +119,26 @@
 
 {{-- Script modal --}}
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const modalEl = document.getElementById('confirmDeleteModal');
-  const modal = new bootstrap.Modal(modalEl);
-  const deleteForm = document.getElementById('deleteForm');
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalEl = document.getElementById('confirmDeleteModal');
+    const modal = new bootstrap.Modal(modalEl);
+    const deleteForm = document.getElementById('deleteForm');
 
-  const delUsername = document.getElementById('del-username');
-  const delId = document.getElementById('del-id');
-  const delRole = document.getElementById('del-role');
-  const delCreated = document.getElementById('del-created');
+    const delUsername = document.getElementById('del-username');
+    const delId = document.getElementById('del-id');
+    const delRole = document.getElementById('del-role');
+    const delCreated = document.getElementById('del-created');
 
-  document.querySelectorAll('.btn-delete').forEach(btn => {
-    btn.addEventListener('click', () => {
-      deleteForm.action = btn.dataset.action;
-      delUsername.textContent = btn.dataset.username;
-      delId.textContent = btn.dataset.id;
-      delRole.textContent = btn.dataset.role.toUpperCase();
-      delCreated.textContent = btn.dataset.created;
-      modal.show();
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => {
+        deleteForm.action = btn.dataset.action;
+        delUsername.textContent = btn.dataset.username;
+        delId.textContent = btn.dataset.id;
+        delRole.textContent = btn.dataset.role.toUpperCase();
+        delCreated.textContent = btn.dataset.created;
+        modal.show();
+      });
     });
   });
-});
 </script>
 @endsection

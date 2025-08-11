@@ -1,14 +1,15 @@
+
 @extends('layouts.public')
 
 @section('title','JurassiDraft – Inicio')
 
 @section('content')
-{{-- HERO --}}
+<!-- Hero -->
 <section class="py-5 bg-white">
   <div class="container">
     <div class="row align-items-center g-4">
 
-      {{-- Columna de texto y acciones --}}
+      {{-- Texto y acciones --}}
       <div class="col-12 col-lg-6">
         <h1 class="display-5 fw-bold mb-3">
           ¡Bienvenido a <span class="text-success">JurassiDraft</span>!
@@ -19,49 +20,43 @@
         </p>
 
         @auth
-          {{-- Botones de acciones --}}
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            @if(auth()->user()->rol === 'admin')
-              <a href="{{ route('admin.usuarios.index') }}" class="btn btn-success btn-lg">Ir al panel</a>
-            @endif
-            <a href="{{ route('play') }}" class="btn btn-success btn-lg">Jugar</a>
+        <div class="d-flex flex-column flex-sm-row flex-wrap align-items-sm-center gap-2">
+          @if(auth()->user()->rol === 'admin')
+          <a href="{{ route('admin.usuarios.index') }}" class="btn btn-warning btn-lg btn-fluid-down-lg">Panel admin</a>
+          @endif
+          <a href="{{ route('play') }}" class="btn btn-success btn-lg btn-fluid-down-lg">Jugar</a>
+          <form action="{{ route('logout') }}" method="POST" class="btn-fluid-down-lg">
+            @csrf
+            <button class="btn btn-outline-danger btn-lg w-100">Cerrar sesión</button>
+          </form>
+        </div>
 
-            <form action="{{ route('logout') }}" method="POST" class="d-inline">
-              @csrf
-              <button class="btn btn-danger btn-lg">Cerrar sesión</button>
-            </form>
-          </div>
-
-          {{-- Saludo integrado como chip --}}
-          <div class="mt-3">
-            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-success-subtle rounded-pill shadow-sm">
-              <span class="badge text-bg-primary">👋</span>
-              <span class="text-success fw-semibold">
-                ¡Hola, {{ auth()->user()->nombre ?? auth()->user()->usuario }}!
-              </span>
-            </div>
-          </div>
+        <div class="mt-3 d-inline-flex align-items-center gap-2 px-3 py-2 bg-success-subtle rounded-pill shadow-sm">
+          <span class="badge text-bg-primary">👋</span>
+          <span class="text-success fw-semibold">
+            ¡Hola, {{ auth()->user()->nombre ?? auth()->user()->usuario }}!
+          </span>
+        </div>
         @endauth
 
         @guest
-          {{-- Botones para invitados --}}
-          <div class="d-flex flex-wrap align-items-center gap-2">
-            <a href="{{ route('login') }}" class="btn btn-success btn-lg">Iniciar sesión</a>
-            <button class="btn btn-outline-secondary btn-lg" disabled title="Función disponible próximamente">
-              Registrarse
-            </button>
-          </div>
+        <div class="d-flex flex-column flex-sm-row flex-wrap align-items-sm-center gap-2">
+          <a href="{{ route('login') }}" class="btn btn-success btn-lg w-100 w-lg-auto">Iniciar sesión</a>
+          <button class="btn btn-outline-secondary btn-lg w-100 w-lg-auto" disabled title="Función disponible próximamente">
+            Registrarse
+          </button>
+        </div>
         @endguest
       </div>
 
-      {{-- Columna de imagen --}}
+      {{-- Imagen --}}
       <div class="col-12 col-lg-6">
-        <div class="card border-0 shadow-lg overflow-hidden rounded-4">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
           <div class="ratio ratio-16x9 bg-success-subtle">
             <img src="{{ asset('images/logojuego_nobg.png') }}"
-                 class="img-fluid w-100 h-100 p-4"
-                 alt="Vista previa de JurassiDraft"
-                 style="object-fit: contain;">
+              alt="Vista previa de JurassiDraft"
+              class="img-fluid w-100 h-100 p-4"
+              style="object-fit: contain;">
           </div>
         </div>
       </div>
@@ -71,7 +66,8 @@
 </section>
 
 
-{{-- CÓMO FUNCIONA --}}
+
+<!-- Cómo funciona -->
 <section class="py-5 bg-light border-top">
   <div class="container">
     <div class="row mb-4 text-center">
