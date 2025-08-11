@@ -1,61 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🦕 JurassiDraft
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**JurassiDraft** es una aplicación web desarrollada por estudiantes de UTU para digitalizar partidas del juego de mesa *Draftosaurus*. Diseñada tanto para jugadores como para docentes, permite registrar y visualizar partidas en tiempo real, promoviendo una experiencia lúdica, educativa y colaborativa.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📌 Descripción
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+JurassiDraft facilita el seguimiento de partidas de *Draftosaurus* mediante un sistema digital que permite:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Registrar jugadas y puntajes de cada jugador.
+- Visualizar tableros individuales y generales.
+- Gestionar usuarios con roles diferenciados (jugador y administrador).
+- Acceder a estadísticas detalladas y reportes de cada sesión.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🎯 Objetivos del proyecto
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Objetivo general
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Diseñar una plataforma digital que permita gestionar partidas de *Draftosaurus*, combinando usabilidad, funcionalidad y valor educativo.
 
-## Laravel Sponsors
+### Objetivos específicos
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Desarrollar un sistema web con interfaz clara e intuitiva.
+- Implementar una base de datos para registrar usuarios, partidas y resultados.
+- Permitir el acceso y administración mediante roles diferenciados.
+- Fomentar el trabajo colaborativo entre los desarrolladores del proyecto.
+- Incorporar funcionalidades que faciliten el uso del juego en entornos educativos.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Tecnologías utilizadas
 
-## Contributing
+- **Frontend:** HTML, CSS (Bootstrap)
+- **Backend:** PHP
+- **Base de datos:** MySQL
+- **Diseño y documentación:** Canva, Google Docs, OnlineGantt
+- **Control de versiones:** Git + GitHub
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 👨‍💻 Equipo de desarrollo
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**We are JurassiCode.**  
+El equipo está conformado por cuatro estudiantes de UTU que combinan conocimientos en programación, diseño, lógica, documentación y presentación.  
+Nos une el interés por los juegos de mesa, la tecnología y el trabajo colaborativo.
 
-## Security Vulnerabilities
+| Integrante | Rol                                  |
+|------------|---------------------------------------|
+| Seba       | Backend y base de datos               |
+| Tomi       | Frontend y documentación              |
+| Nacho      | Arquitectura del sistema y diseño     |
+| Joaco      | Testing, validaciones y seguridad     |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 📂 Estructura del repositorio
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+A DEFINIR ESTRUCTURA DE CARPETAS FINAL
+```
+
+---
+
+## 📄 Licencia
+
+**MIT License**
+
+Este proyecto es de código abierto y se distribuye bajo los términos de la Licencia MIT.
+
+- ✅ Podés usar, copiar, modificar y distribuir el código libremente, incluso con fines comerciales.
+- 📌 Solo se requiere mantener el aviso de autoría original.
+- ⚠️ El software se entrega "tal como está", sin garantías ni responsabilidades.
+
+&copy; 2025, JurassiCode
