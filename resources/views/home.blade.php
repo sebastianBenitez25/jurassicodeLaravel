@@ -25,16 +25,14 @@
             </form>
           @else
             <a href="{{ route('login') }}" class="btn btn-primary btn-lg me-2">Ingresar</a>
-            {{-- Si más adelante habilitás registro público, podés agregar:
-            <a href="{{ route('registro') }}" class="btn btn-outline-secondary btn-lg">Crear cuenta</a>
-            --}}
+            
           @endauth
         </div>
 
         <div class="col-12 col-lg-6">
           <div class="card shadow-sm">
             <div class="ratio ratio-16x9">
-              {{-- Placeholder de imagen/video; podés cambiar por un PNG de tu proyecto --}}
+              {{-- Placeholder de imagen/video;  --}}
               <img src="https://picsum.photos/800/450?random=3" class="card-img-top" alt="JurassiDraft preview">
             </div>
           </div>
